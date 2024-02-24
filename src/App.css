@@ -23,7 +23,7 @@ body {
   padding: 20px;
   display: flex;
   flex-direction: column;
-  min-width: 300px;
+  min-width: 400px;
   align-items: center;
 }
 
@@ -32,6 +32,13 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+.board-his {
+  margin-top: 30px;
+  display: flex;
+}
+.board {
+  margin-right: 50px;
 }
 
 .result {
