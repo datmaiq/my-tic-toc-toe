@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import Board from "./Board";
 import History from "./History";
+import { useWinnerContext } from "./context/WinnerContext";
 
 function Game() {
   const [squares, setSquares] = useState(Array(9).fill(null));
   const [xIsNext, setXIsNext] = useState(true);
-  const [winner, setWinner] = useState(null);
+  const { winner, setWinner } = useWinnerContext();
   const [history, setHistory] = useState([]);
 
   //Declaring a Winner
@@ -42,18 +43,22 @@ function Game() {
 
   //Handle player
   const handleClick = (i) => {
+    // if (squares[i] || winner) {
+    //   return;
+    // }
     let temp = [...squares];
     temp[i] = xIsNext ? "X" : "O";
-    let historyTemp = {};
-    historyTemp["location"] = i;
-    historyTemp["user"] = temp[i];
-    let list = history;
-    list.unshift(historyTemp);
-    setHistory(list);
+    console.log(temp[i]);
+    setHistory([...history, temp]);
+
     setXIsNext(!xIsNext);
     setSquares(temp);
   };
 
+  const handleHistory = (i) => {
+    console.log(history[i]);
+    setSquares(history[i]);
+  };
   //Restart game
   const handlRestart = () => {
     setSquares(Array(9).fill(null));
@@ -68,11 +73,13 @@ function Game() {
         <span className="player">Next player is: {xIsNext ? "X" : "O"}</span>
         <div className="board-his">
           <Board
+            winner={winner}
             className="board"
             squares={squares}
             handleClick={handleClick}
           />
-          <History className="history" history={history} />
+
+          <History history={history} handleHistory={handleHistory} />
         </div>
       </div>
       <button onClick={handlRestart} className="restart-btn">

@@ -85,13 +85,26 @@ body {
   content: "";
   display: table;
 }
-
+.wrap-history {
+  display: flex;
+}
 .history {
-  border: 1px solid #20b7f6;
+  height: 150px;
+  display: flex;
+  flex-direction: column;
   border-radius: 5px;
   padding: 10px;
+  overflow-y: auto;
 }
-
+.button-history {
+  border: 1px solid #20b7f6;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 2px;
+  text-align: center;
+  height: 20px;
+  width: 100px;
+}
 .history h4 {
   text-align: center;
   margin: 0;
@@ -103,13 +116,6 @@ body {
   margin: 0;
   font-size: 14px;
   text-align: center;
-}
-
-.history button {
-  border: 1px solid #20b7f6;
-  margin: 2px;
-  cursor: pointer;
-  border-radius: 5px;
 }
 
 .restart-btn {

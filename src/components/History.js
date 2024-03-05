@@ -1,18 +1,21 @@
 import React from "react";
 
-function History({ history }) {
+function History({ history, handleHistory }) {
   return (
-    <div>
+    <div wrap-history>
       <h1>History</h1>
-      {history.map((item, index) => {
-        return (
-          <div key={index}>
-            <p>
-              {index + 1} {item.user} go to #{item.location}
-            </p>
-          </div>
-        );
-      })}
+      <div className="history">
+        {history.map((item, index) => {
+          return (
+            <button
+              className="button-history"
+              onClick={() => handleHistory(index)}
+            >
+              {index + 1} go to #{index + 1}
+            </button>
+          );
+        })}
+      </div>
     </div>
   );
 }
