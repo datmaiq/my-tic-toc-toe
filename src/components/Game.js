@@ -12,6 +12,7 @@ function Game() {
   //Declaring a Winner
   useEffect(() => {
     setWinner(calculateWinner(squares));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [squares]);
 
   //function to check if a player has won.
